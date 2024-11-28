@@ -1,0 +1,7 @@
+/* You can add global styles to this file, and also import other style files */
+/* @import "~ng-zorro-antd/ng-zorro-antd.min.css"; */
+.parent-container {
+    width: 100%; /* Ensures the parent spans full width */
+    max-width: 100%; /* Prevents any width limitation */
+    margin: 0; /* Removes any auto-centering margins */
+  }

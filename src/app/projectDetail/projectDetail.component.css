@@ -1,0 +1,119 @@
+
+/* ===CODFE HEADING STYLE #12 === */
+
+.cf-title-12 h1 {
+    font-size:36px; font-weight:700;  letter-spacing:1px; text-transform:uppercase; text-align:center; margin:auto; white-space:nowrap; padding-bottom:13px;
+  }
+  .cf-title-12 h1:before {
+      background-color: #c50000;
+      content: '';
+      display: block;
+      height: 3px;
+      width: 75px;
+      margin-bottom: 5px;
+  }
+
+/* General styles for pagination */
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .pagination-button {
+    background-color: #6200ea;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 0 5px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .pagination-button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .pagination-button:hover {
+    background-color: #3700b3;
+  }
+  
+  .pagination-button:focus {
+    outline: none;
+  }
+  
+  .page-numbers {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .page-numbers button {
+    margin: 0 5px;
+  }
+  
+  .page-numbers button.active {
+    background-color: #03dac5;
+    color: black;
+  }
+  
+  .page-numbers button:hover {
+    background-color: #3700b3;
+    color: white;
+  }
+  
+
+  .project-info {
+    background-color: #f9f9f9;
+    padding: 20px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    margin-bottom: 20px;
+    font-family: Arial, sans-serif; 
+  }
+  
+  .project-info h2 {
+    font-size: 24px;
+    color: #007bff;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #007bff;
+    padding-bottom: 5px;
+  }
+  
+  .project-meta {
+    font-size: 16px;
+    color: #333; 
+    line-height: 1.8;
+  }
+  
+  .project-meta p {
+    margin: 5px 0; 
+  }
+  
+  .project-meta strong {
+    color: #555; 
+  }
+  .form-select {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .btn {
+    margin-right: 5px;
+  }
+  
+  .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+  }
+  
+  .btn-danger {
+    background-color: #dc3545;
+    border-color: #dc3545;
+  }
+  

@@ -1,0 +1,132 @@
+<div class="project-detail-container">
+    <div class="cf-title-12">
+        <h1>{{title}}</h1>
+      </div>
+    <!-- Hiển thị thông tin chi tiết của dự án -->
+    <div class="project-info">
+        <h2>{{ project?.name }}</h2>
+        <div class="project-meta">
+          <p><strong>Project ID:</strong> {{ project?.projectId }}</p>
+          <p><strong>Description:</strong> {{ project?.description }}</p>
+          <p><strong>Created By:</strong> {{ project?.userName }}</p>
+        </div>
+      </div>
+    
+    <!-- Button to add new row -->
+
+      <button (click)="addTaskRow()" class="btn btn-success mb-3">Add Task</button>
+
+    <!-- Hiển thị danh sách task -->
+    <div class="task-list">
+      <h3>Task List</h3>
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Task ID</th>
+            <th>Task Name</th>
+            <th>Assignee</th>
+            <th>Status</th>
+            <th>Task Description</th>
+          </tr>
+        </thead>
+        <tbody>
+ <!-- New task row (hidden initially) -->
+    <tr *ngIf="isNewRowVisible">
+        <td>
+
+        </td>
+        <td>
+            <input
+            type="text"
+            [(ngModel)]="newTask.taskName"
+            class="form-control"
+            placeholder="Enter task name"
+          />
+        </td>
+        <td>
+            <select [(ngModel)]="newTask.userName" class="form-select" (change)="onAssignedToChange(newTask.userName)">
+                <option *ngFor="let user of userList" [value]="user">
+                  {{ user }}
+                </option>
+              </select>
+          </td>
+        <td>
+          <select [(ngModel)]="newTask.status" class="form-select" (change)="ontaskStatusChange(newTask.status)">
+            <option *ngFor="let status of statusList" [value]="status">
+              {{ status }}
+            </option>
+          </select>
+        </td>
+        <td>
+            <input
+              type="text"
+              [(ngModel)]="newTask.description"
+              class="form-control"
+              placeholder="Enter description"
+            />
+          </td>
+        <td>
+          <button (click)="saveNewTask()" class="btn btn-primary">Save</button>
+          <button (click)="cancelNewTask()" class="btn btn-secondary">Cancel</button>
+        </td>
+        </tr>
+          <tr *ngFor="let task of taskList">
+            <td>{{ task.taskId }}</td>
+            <td><input 
+                type="text" 
+                [(ngModel)]="task.taskName" 
+                class="form-control" 
+                placeholder="Enter task name"
+              /></td>
+            
+            <td>
+                <select [(ngModel)]="task.assignedTo" class="form-select" (change)="onAssignedToChange(task.assignedTo)">
+                  <option *ngFor="let user of userList" [value]="user">
+                    {{ user }}
+                  </option>
+                </select>
+            </td>
+
+              <td>
+                <select [(ngModel)]="task.taskStatus" class="form-select" (change)="ontaskStatusChange(task.taskStatus)">
+                  <option *ngFor="let status of statusList" [value]="status">
+                    {{ status }}
+                  </option>
+                </select>
+              </td>
+              <!-- <td>{{ task.taskDescription }}</td> -->
+              <td><input 
+                type="text" 
+                [(ngModel)]="task.taskDescription" 
+                class="form-control" 
+                placeholder="Enter task Description"
+              /></td>
+              <td>
+                <button class="btn btn-primary" (click)="editTask(task)">Edit</button>
+                <button class="btn btn-danger" (click)="deleteTask(task.taskId)">Delete</button>
+              </td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  
+    <!-- Hiển thị phân trang -->
+    <div class="pagination-controls">
+        <button (click)="previousPage()" [disabled]="currentPage === 0" class="pagination-button">
+          Previous
+        </button>
+      
+        <span class="page-numbers">
+          <button *ngFor="let page of pageNumbers" 
+                  (click)="goToPage(page - 1)" 
+                  [class.active]="currentPage === page - 1"
+                  class="pagination-button">
+            {{ page }}
+          </button>
+        </span>
+      
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1" class="pagination-button">
+          Next
+        </button>
+    </div>
+  
