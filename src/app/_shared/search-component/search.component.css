@@ -1,0 +1,53 @@
+.material-input {
+  position: relative;
+  width: 100%;
+  font-family: Arial, sans-serif;
+}
+
+.material-input .form-control {
+  width: 100%;
+  font-size: 16px;
+  padding: 10px 5px;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  outline: none;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.material-input .form-control:focus {
+  border-bottom: 2px solid #3f51b5; /* Material Design primary color */
+}
+
+.material-input .input-label {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  font-size: 16px;
+  color: #9e9e9e; /* Material Design secondary color */
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.material-input .form-control:focus + .input-label,
+.material-input .form-control:not(:placeholder-shown) + .input-label {
+  top: -10px;
+  left: 0;
+  font-size: 12px;
+  color: #3f51b5;
+}
+
+.material-input .input-underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: #3f51b5;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.material-input .form-control:focus ~ .input-underline {
+  transform: scaleX(1);
+}

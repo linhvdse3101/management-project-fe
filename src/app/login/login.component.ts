@@ -40,12 +40,14 @@ export class LoginComponent implements OnInit {
       localStorage.setItem('auth_token', result.data.access_token);
       localStorage.setItem('refresh_token', result.data.refresh_token);
       localStorage.setItem('user_role', result.data.user_role);
+      sessionStorage.setItem('role', result.data.user_role);
       this.storageService.saveUser(result.data);
       this.roles = result.data.user_role;
       
       this.isLoggedIn = true;
       this.isLoginFailed = false;
       this.router.navigate(['/project']);
+      
     }
   }
   reloadPage(): void {

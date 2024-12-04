@@ -16,6 +16,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { httpInterceptorProviders } from './_helpers/http.interceptor';
+import { pagingComponent } from './_shared/paging-component/pagination.component';
+import { searchComponent } from './_shared/search-component/search.component';
+
 
 @NgModule({
   declarations: [
@@ -23,7 +26,9 @@ import { httpInterceptorProviders } from './_helpers/http.interceptor';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    projectDetailComponent
+    projectDetailComponent,
+    pagingComponent,
+    searchComponent
   ],
   imports: [
     BrowserModule,

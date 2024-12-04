@@ -123,4 +123,14 @@ export class HomeComponent implements OnInit {
         description: ''
       };
     }
+
+    onPageChange(page:number){
+      this.currentPage = page;
+      this.loadProjects();
+    }
+
+    handleSearch(value: string): void {
+      this.searchText = value;
+      this.loadProjects();
+    }
 }

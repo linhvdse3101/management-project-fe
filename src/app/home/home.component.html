@@ -2,43 +2,25 @@
   <h1>{{title}}</h1>
 </div>
 <div class="container">
-  <div class="row search-hero">
-    <!-- Search input field -->
-    <input class="form-control" 
-           type="text" 
-           name="search" 
-           [(ngModel)]="searchText" 
-           autocomplete="off" 
-           placeholder="&#61442; Start searching"
-           (ngModelChange)="searchProjects()">
-  </div>
-    <!-- Button to add new row -->
+  <app-search  (searchSubmit)="handleSearch($event)">
+  </app-search>
+  <!-- Button to add new row -->
 
-    <button (click)="addTaskRow()" class="btn btn-success mb-3">Add Project</button>
+  <button (click)="addTaskRow()" style="margin-top: 20px;" class="btn btn-success mb-3">Add Project</button>
   <div class="row table-body">
     <!-- New project row (hidden initially) -->
     <tr *ngIf="isNewRowVisible">
       <td>
-          <input
-          type="text"
-          [(ngModel)]="newProject.name"
-          class="form-control"
-          placeholder="Enter project name"
-        />
+        <input type="text" [(ngModel)]="newProject.name" class="form-control" placeholder="Enter project name" />
       </td>
       <td>
-          <input
-            type="text"
-            [(ngModel)]="newProject.description"
-            class="form-control"
-            placeholder="Enter description"
-          />
-        </td>
+        <input type="text" [(ngModel)]="newProject.description" class="form-control" placeholder="Enter description" />
+      </td>
       <td>
         <button (click)="savenewProject()" class="btn btn-primary">Save</button>
         <button (click)="cancelnewProject()" class="btn btn-secondary">Cancel</button>
       </td>
-</tr>
+    </tr>
     <!-- Table to display project list -->
     <table class="table table-striped">
       <thead>
@@ -63,22 +45,5 @@
     </table>
   </div>
 
-<!-- Pagination controls -->
-<div class="pagination-controls">
-  <button (click)="previousPage()" [disabled]="currentPage === 0" class="pagination-button">
-    Previous
-  </button>
-
-  <span class="page-numbers">
-    <button *ngFor="let page of pageNumbers" 
-            (click)="goToPage(page - 1)" 
-            [class.active]="currentPage === page - 1"
-            class="pagination-button">
-      {{ page }}
-    </button>
-  </span>
-
-  <button (click)="nextPage()" [disabled]="currentPage === totalPages - 1" class="pagination-button">
-    Next
-  </button>
-</div>
+  <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChange)="onPageChange($event)">
+  </app-pagination>

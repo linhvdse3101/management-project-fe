@@ -11,10 +11,19 @@
           <p><strong>Created By:</strong> {{ project?.userName }}</p>
         </div>
       </div>
-    
+      <app-search  (searchSubmit)="handleSearch($event)">
+      </app-search>
     <!-- Button to add new row -->
+     <div class="row">
+      
+      <div class="col-6">
+        <button (click)="goBack()" style="margin-top: 20px;" class="btn btn-success mb-3">Back</button>
+      </div>
 
-      <button (click)="addTaskRow()" class="btn btn-success mb-3">Add Task</button>
+      <div class="col-6">
+        <button (click)="addTaskRow()" style="margin-top: 20px; float: right;" class="btn btn-success mb-3">Add Task</button>
+      </div>
+    </div>
 
     <!-- Hiển thị danh sách task -->
     <div class="task-list">

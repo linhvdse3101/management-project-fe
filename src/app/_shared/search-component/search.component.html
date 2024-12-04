@@ -1,0 +1,12 @@
+<div class="material-input">
+  <input
+    class="form-control"
+    type="text"
+    name="search"
+    [(ngModel)]="searchText" 
+    autocomplete="off"
+    [placeholder]="placeholder"
+    (keypress)="onKeyPress($event)">
+  <label class="input-label">{{ placeholder || 'Start searching...' }}</label>
+  <span class="input-underline"></span>
+</div>

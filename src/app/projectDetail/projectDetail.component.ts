@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService, IUserCreate, ProjectSearchRequest, TaskSearchRequest } from '../_services/auth.service';
 import { ActivatedRoute } from '@angular/router';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-project-detail',
   templateUrl: './projectDetail.component.html',
@@ -31,11 +31,11 @@ export class projectDetailComponent implements OnInit {
     userName: ''
   };
 
-  constructor(private authService:AuthService,private router:ActivatedRoute) { }
+  constructor(private authService:AuthService,private routerActive:ActivatedRoute,private router: Router) { }
 
   async ngOnInit() { 
     
-    this.projectId = Number(this.router.snapshot.paramMap.get('id'));
+    this.projectId = Number(this.routerActive.snapshot.paramMap.get('id'));
     this.newTask.projectId = this.projectId
     if (this.projectId) {
       await this.loadProject(); // Gọi API với projectId
@@ -126,7 +126,7 @@ export class projectDetailComponent implements OnInit {
         projectId: this.projectId,
         userAssign: task.assignedTo,
         description: task.taskDescription,
-        status: this.status || task.taskStatus
+        status: task.taskStatus
       };
       
       await this.authService.updateTasks(task.taskId,payload);
@@ -196,6 +196,13 @@ export class projectDetailComponent implements OnInit {
       userName: ''
     };
   }
+  handleSearch(value: string): void {
+    this.searchText = value;
+    this.loadProject();
+  }
 
+  goBack(){
+    this.router.navigate(['/project']);
+  }
 }
 
